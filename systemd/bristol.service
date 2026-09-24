@@ -1,0 +1,17 @@
+[Unit]
+Description=bristol ARP Odyssey (vintage synth emulation)
+After=jack.service
+BindsTo=jack.service
+
+[Service]
+User=patch
+Group=patch
+Environment=JACK_PROMISCUOUS_SERVER=jack
+Environment=HOME=/home/patch
+ExecStart=/usr/local/bin/bristol-start.sh
+ExecStopPost=/bin/sh -c 'pkill -f "Xvfb :99"; pkill -f bristolody; exit 0'
+Restart=on-failure
+RestartSec=8
+
+[Install]
+WantedBy=multi-user.target

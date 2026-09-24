@@ -1,0 +1,16 @@
+[Unit]
+Description=Pad instrument switcher (Pianoteq + setBfree)
+After=jack.service pianoteq9.service
+BindsTo=jack.service
+
+[Service]
+User=patch
+Group=patch
+Environment=JACK_PROMISCUOUS_SERVER=jack
+Environment=HOME=/home/patch
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/python3 /home/patch/.local/bin/padmap.py
+
+[Install]
+WantedBy=multi-user.target

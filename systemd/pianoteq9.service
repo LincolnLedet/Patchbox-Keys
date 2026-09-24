@@ -1,0 +1,19 @@
+[Unit]
+Description=Pianoteq 9 standalone (JACK)
+After=jack.service
+BindsTo=jack.service
+
+[Service]
+User=patch
+Group=patch
+Environment=JACK_PROMISCUOUS_SERVER=jack
+Environment=HOME=/home/patch
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+ExecStart=/bin/bash -c 'sleep infinity | "/opt/Pianoteq 9/Pianoteq 9" --headless --serve 127.0.0.1:8999'
+ExecStartPost=/bin/sh -c 'sleep 8; jack_connect Pianoteq:out_1 system:playback_1 2>/dev/null || true; jack_connect Pianoteq:out_2 system:playback_2 2>/dev/null || true; exit 0'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

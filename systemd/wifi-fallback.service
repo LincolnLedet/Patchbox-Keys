@@ -1,0 +1,12 @@
+[Unit]
+Description=Start WiFi hotspot if no network is available at boot
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/wifi-fallback.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,66 @@
+{
+  "akai_pad": "105",
+  "casio_pad": "101",
+  "akai_vol": 127,
+  "casio_vol": 79,
+  "preset_gains": {
+    "setbfree:Hammond Organ": 115,
+    "pianoteq:W2 JazzRock Warm": 80,
+    "pianoteq:MKI Basic Mono": 110,
+    "bristol:1": 42,
+    "bristol:11": 42,
+    "bristol:12": 135,
+    "bristol:13": 42,
+    "bristol:14": 42,
+    "bristol:15": 42,
+    "bristol:21": 42,
+    "bristol:88": 42,
+    "fluid:40": 200,
+    "pianoteq:MKII 70s Fusion": 100,
+    "pianoteq:W2 Basic Stereo": 100,
+    "pianoteq:NY Steinway D Chamber Recording": 110,
+    "fluid:48": 200
+  },
+  "pads": {
+    "107": {
+      "type": "bristol",
+      "preset": "12",
+      "name": "ARP Odyssey 12"
+    },
+    "104": {
+      "type": "zyn",
+      "preset": "/usr/share/zynaddsubfx/banks/Strings/0001-Saw Strings 1.xiz",
+      "name": "Saw Strings"
+    },
+    "105": {
+      "type": "fluid",
+      "preset": "48",
+      "name": "String Ensemble"
+    },
+    "106": {
+      "type": "pianoteq",
+      "preset": "Clavinet D6 Stage",
+      "name": "Clavinet"
+    },
+    "100": {
+      "type": "pianoteq",
+      "preset": "W1 Basic Stereo",
+      "name": "W1 Basic Stereo"
+    },
+    "101": {
+      "type": "pianoteq",
+      "preset": "W2 Basic Stereo",
+      "name": "W2 Basic Stereo"
+    },
+    "102": {
+      "type": "setbfree",
+      "preset": "",
+      "name": "Hammond Organ"
+    },
+    "103": {
+      "type": "pianoteq",
+      "preset": "HB Steinway D Mono",
+      "name": "HB Steinway D Warm"
+    }
+  }
+}

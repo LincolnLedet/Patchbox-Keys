@@ -1,0 +1,19 @@
+[Unit]
+Description=setBfree Hammond organ (jalv LV2)
+After=jack.service
+BindsTo=jack.service
+
+[Service]
+User=patch
+Group=patch
+Environment=JACK_PROMISCUOUS_SERVER=jack
+Environment=LV2_PATH=/usr/lib/lv2:/var/modep/lv2
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+ExecStart=/bin/bash -c 'sleep infinity | chrt --rr 79 jalv -n setBfree http://gareus.org/oss/lv2/b_synth'
+ExecStartPost=/bin/sh -c 'sleep 6; jack_connect setBfree:outL system:playback_1 2>/dev/null || true; jack_connect setBfree:outR system:playback_2 2>/dev/null || true; exit 0'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

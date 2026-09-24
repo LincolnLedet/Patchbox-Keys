@@ -1,0 +1,8 @@
+# live runtime state (device-specific; never commit)
+config/config.json
+*.bak
+*.pyc
+__pycache__/
+# Pianoteq / vendor prefs and licenses
+*.prefs
+*.license

@@ -1,0 +1,23 @@
+[Unit]
+Description=FluidSynth GM (FluidR3 — violin/strings/orchestral samples)
+After=jack.service
+BindsTo=jack.service
+
+[Service]
+User=patch
+Group=patch
+Environment=JACK_PROMISCUOUS_SERVER=jack
+# JACK MIDI only (-m jack) so keyboards can't ALSA-seq auto-connect to it.
+# audio.jack.autoconnect wires fluidr3:left/right → system:playback_1/2.
+ExecStart=/usr/bin/fluidsynth -is -a jack -m jack \
+  -o synth.sample-rate=48000 -o synth.midi-channels=16 \
+  -o synth.cpu-cores=1 -o synth.polyphony=32 \
+  -o synth.reverb.active=1 -o synth.chorus.active=0 \
+  -o audio.jack.id=fluidr3 -o midi.jack.id=fluidr3 \
+  -o audio.jack.autoconnect=1 \
+  /usr/share/sounds/sf2/FluidR3_GM.sf2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
